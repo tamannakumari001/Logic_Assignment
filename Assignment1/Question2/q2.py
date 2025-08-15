@@ -48,7 +48,18 @@ class SokobanEncoder:
     def _parse_grid(self):
         """Parse grid to find player, boxes, and goals."""
         # TODO: Implement parsing logic
-        pass
+        for row in range(len(self.grid)):
+            for elem in range(len(self.grid[row])):
+                if (self.grid[row][elem] == 'G'): 
+                    self.goals.append([row,elem])
+                elif (self.grid[row][elem] == 'B'):
+                    self.boxes.append([row,elem])
+                elif (self.grid[row][elem] == 'P'):
+                    self.player_start = [row ,elem]
+                
+                
+
+
 
     # ---------------- Variable Encoding ----------------
     def var_player(self, x, y, t):

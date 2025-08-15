@@ -85,7 +85,6 @@ def solve_sudoku(grid: List[List[int]]) -> List[List[int]]:
 
 
 
-    return [[1]*9 for _ in range(9)]
 
 
 
