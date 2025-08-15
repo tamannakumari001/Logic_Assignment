@@ -11,21 +11,30 @@ from typing import List
 def solve_sudoku(grid: List[List[int]]) -> List[List[int]]:
     """Solves a Sudoku puzzle using a SAT solver. Input is a 2D grid with 0s for blanks."""
     cnf = CNF()
-    #giving our initital grid as input
+    # work on optimizations..
+    # row_condition = [[0]*9 for _ in range(9)]
+    # col_condition = [[0]*9 for _ in range(9)]
+    # block_condition = [[0]*9 for _ in range(9)]
     for i in range(9):
         for j in range(9):
-            if grid[i][j]!=0:
+            if grid[i][j]!=0:     #giving our initital grid as input
                 cnf.append([(9**2)*j + 9*i + grid[i][j]])
-
-
-    #condition that each box can only contain one digit.
-    for i in range(9):
-        for j in range (9):
-            for val in range(1,10):
+            for val in range(1,10):     #condition that each box only contains one digit
                 for other in range(val+1,10):
                     a = (9**2)*j + 9*i + val
                     b = (9**2)*j + 9*i +other
                     cnf.append([-1*a,-1*b])
+                
+
+
+    #condition that each box can only contain one digit.
+    # for i in range(9):
+    #     for j in range (9):
+    #         for val in range(1,10):
+    #             for other in range(val+1,10):
+    #                 a = (9**2)*j + 9*i + val
+    #                 b = (9**2)*j + 9*i +other
+    #                 cnf.append([-1*a,-1*b])
     
     #condition that each row must contain only one occurence of each number.
     for i in range (9):
