@@ -45,7 +45,7 @@ class SokobanEncoder:
 
 
         self.T = T
-        self.rows = len(self.grid)  #here I changed the definition of rows from grid to self.grid so that the padded rowsa re taken into account.
+        self.rows = len(self.grid)  #here I changed the definition of rows from grid to self.grid so that the padded rows are taken into account.
         self.cols = len(self.grid[0]) 
 
         self.goals = []
@@ -205,7 +205,7 @@ def decode(model, encoder):
     Returns:
         list[str]: Sequence of moves.
     """
-    rows, cols, T = encoder.rows, encoder.cols, encoder.T
+
     sequence = []
     positions = []
     for literal in model :
@@ -223,13 +223,12 @@ def decode(model, encoder):
                         if DIRS[key] == ((positions[-1][0] - positions[-2][0]),(positions[-1][1] - positions[-2][-1])):
                             sequence.append(key)
                             break
-    print(sequence)
+    #print(sequence)
     return sequence
 
 
 
     # TODO: Map player positions at each timestep to movement directions
-    return ['U']
 
 
 def solve_sokoban(grid, T):

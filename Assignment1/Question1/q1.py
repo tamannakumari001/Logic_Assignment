@@ -24,6 +24,16 @@ def solve_sudoku(grid: List[List[int]]) -> List[List[int]]:
                     a = (9**2)*j + 9*i + val
                     b = (9**2)*j + 9*i +other
                     cnf.append([-1*a,-1*b])
+        for val in range(1,10):
+            to_append = []
+            to_append2 = []
+            for j in range(9):
+                a = (9**2)*j + 9 * i + val
+                b = (9**2)*i + 9 * j + val
+                to_append.append(a)
+                to_append2.append(b)
+            cnf.append(to_append)
+            cnf.append(to_append2)
                 
 
 
@@ -37,22 +47,22 @@ def solve_sudoku(grid: List[List[int]]) -> List[List[int]]:
     #                 cnf.append([-1*a,-1*b])
     
     #condition that each row must contain only one occurence of each number.
-    for i in range (9):
-        for val in range(1,10):
-            to_append = []
-            for j in range(9):
-                a = (9**2)*j + 9 * i + val
-                to_append.append(a)
-            cnf.append(to_append)
+    # for i in range (9):
+    #     for val in range(1,10):
+    #         to_append = []
+    #         for j in range(9):
+    #             a = (9**2)*j + 9 * i + val
+    #             to_append.append(a)
+    #         cnf.append(to_append)
 
-    #condition that each column must contain only one occurence of each number
-    for j in range (9):
-        for val in range(1,10):
-            to_append = []
-            for i in range(9):
-                a = (9**2)*j + 9 * i + val
-                to_append.append(a)
-            cnf.append(to_append)    
+    # #condition that each column must contain only one occurence of each number
+    # for j in range (9):
+    #     for val in range(1,10):
+    #         to_append = []
+    #         for i in range(9):
+    #             a = (9**2)*j + 9 * i + val
+    #             to_append.append(a)
+    #         cnf.append(to_append)    
 
     #condition that each 3x3 block must contain only one occurence of each member
     for i in range(0,9,3):
