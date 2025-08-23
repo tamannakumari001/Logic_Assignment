@@ -23,7 +23,6 @@ def solve_sudoku(grid: List[List[int]]) -> List[List[int]]:
 
 
     # Encoding rows, columns and 3x3 grid condition
-    l = []
     for num in range(9):
         cell = 0
         for i in range(9):

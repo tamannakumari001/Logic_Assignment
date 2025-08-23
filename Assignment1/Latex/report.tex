@@ -40,7 +40,132 @@
 \end{titlepage}
 
 \newpage
+\section*{Question 1}
 
+\subsection*{Approach towards encoding Sudoku rules as a CNF}
+We categorised 5 constraints which should be encoded.
+
+\subsubsection*{Variable Encoding}
+
+Suppose P(i,j,num) stands true if num occupies row i and column j.
+\[1\leq num\leq 9\]  
+\[0\leq i,j\leq 8\]
+
+Now we encoded P(i,j,num) as follows:
+\[81*i + 9*j + num\]
+This gives us numbers from 1 to 729 each corresponding to a unique P(i,j,num).
+
+\subsubsection*{Constraints}
+\begin{lstlisting}
+    # Encoding all given numbers
+    for i in range(9):
+        for j in range(9):
+            if (grid[i][j] != 0 ):
+                box_no = i*9 + j
+                cnf.append([box_no*9+grid[i][j]])
+\end{lstlisting}
+
+This appends to our cnf that the initial marking of numbers that we have to solve must be true.
+
+\begin{lstlisting}
+    # Encoding rows, columns and 3x3 grid condition
+    for num in range(9):
+        cell = 0
+        for i in range(9):
+            row_encode = []
+            col_encode = []
+            box_encode = []
+
+            if(i%3==0):
+                cell = 9*i+1
+            else:
+                cell = cell - 17
+
+            for j in range(9):
+                row_encode.append((9*i+j)*9+num+1)
+                col_encode.append((i+9*j)*9+num+1)
+
+                box_encode.append((cell-1)*9+num+1)
+
+                if j==8:
+                    continue
+                if((j+1)%3==0):
+                    cell += 7
+                else:
+                    cell += 1
+
+            cnf.append(row_encode)
+            cnf.append(col_encode)
+            cnf.append(box_encode)
+\end{lstlisting}
+
+Each row must contain atleast one occurence of 1,2,...9
+\[
+\bigwedge_{\text{num}=1}^{9} \bigwedge_{\text{row}=0}^{8} 
+\Bigg( \bigvee_{\text{col}=0}^{8} P(\text{row}, \text{col}, \text{num}) \Bigg)
+\]
+
+Each column must contain atleast one occurence of 1,2,...9
+\[
+\bigwedge_{\text{num}=1}^{9} \bigwedge_{\text{col}=0}^{8} 
+\Bigg( \bigvee_{\text{row}=0}^{8} P(\text{row}, \text{col}, \text{num}) \Bigg)
+\]
+
+Each 3x3 block must contain atleast one occurence of 1,2,..,9
+\[
+\bigwedge_{\text{num}=1}^{9} 
+\bigwedge_{\text{box\_row}=0}^{2} 
+\bigwedge_{\text{box\_col}=0}^{2} 
+\Bigg(
+\bigvee_{i=0}^{2} \bigvee_{j=0}^{2} 
+P(3 \cdot \text{box\_row} + i, 3 \cdot \text{box\_col} + j, \text{num})
+\Bigg)
+\]
+
+\subsubsection*{Row and Column Encoding Explanation}
+
+We use three nested loops over \texttt{num}, \texttt{i}, and \texttt{j}. Here, \texttt{num} represents the number 1--9, \texttt{i} the row index, and \texttt{j} the column index.
+
+For each row \texttt{i} and number \texttt{num}, we maintain a list \texttt{row\_encode} which represents a single clause, i.e., the disjunction (OR) of all boxes in that row for the given number. Using \texttt{j}, we iterate over all 9 columns/boxes in the row and add the corresponding variable \(P(i, j, num)\) to the clause, ensuring that the number \texttt{num} appears in at least one box of the row.
+
+Similarly, we use \texttt{col\_encode} and iterate using j over all rows/boxes in a particular column and add a clause for every number and every column ensuring that the number num appears in atleast one box of every column.
+
+For encoding atleast one appearance of each number in a 3x3 box,
+
+\subsubsection*{Box Encoding Explanation}
+
+The list \texttt{box\_encode} represents a single clause that ensures a given number \texttt{num} appears at least once in a 3$\times$3 box. The variable \texttt{cell} is used to traverse all 9 cells of the current box in a linearized SAT variable numbering. For each column index \texttt{j}, we append the corresponding SAT variable 
+\(
+(cell-1) \cdot 9 + num + 1
+\) 
+to \texttt{box\_encode}. The arithmetic on \texttt{cell} ensures that after each step, we correctly move to the next cell within the 3$\times$3 box, handling the jumps between rows of the box. After iterating over all columns, \texttt{box\_encode} contains all variable indices for the number in that box, and adding it to \texttt{cnf} enforces the "at least one occurrence per box" constraint.
+
+
+
+\begin{itemize}
+    \item At the start of a new set of three rows (\texttt{i \% 3 == 0}), \texttt{cell} is initialized to the first cell of the top row of the current box: 
+    \[
+        \texttt{cell} = 9 \cdot i + 1.
+    \]
+    This sets the starting point for the box in the flattened 9$\times$9 grid numbering.
+    
+    \item For the second and third rows of the 3$\times$3 box, \texttt{cell} is adjusted backwards by 17: 
+    \[
+        \texttt{cell} = \texttt{cell} - 17.
+    \]
+    This moves the pointer from the end of the previous row back to the start of the next row of the box, correctly positioning for the next set of three cells.
+    
+    \item Within a row of the box, after each column \texttt{j}, \texttt{cell} is incremented to move to the next cell:
+    \begin{itemize}
+        \item If \texttt{(j+1)\%3 == 0} (i.e., at the end of a mini-row within the box), \texttt{cell} is incremented by 7. This jumps to the first cell of the next mini-row within the 3$\times$3 box.
+        \item Otherwise, \texttt{cell} is incremented by 1 to move to the next column in the same mini-row.
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Member Contributions}
+This question was independently solved and coded by both team members with similar logic and runtime but just slight differences.
+Then we discussed and optimized the encoder to give the final submission. 
+\newpage
 %-------------------- Question 2 --------------------%
 \section*{Question 2}
 

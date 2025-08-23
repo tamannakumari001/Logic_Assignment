@@ -241,6 +241,9 @@ where (goal1_x,goal1_y), (goal2_x,goal2_y), ..., (goalk_x,goalk_y) are the coord
 </logical notation>
 
 
+Row Encoding : 
+
+for all num and for all row P(row,0,num) OR P(row,1,num) OR .. OR P(row,8,num)
 
 
 

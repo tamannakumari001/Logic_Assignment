@@ -1,8 +1,8 @@
 # Fdb version 4
-["pdflatex"] 1755929618.27519 "/home/tamanna/Documents/Logic_Assignment/Assignment1/Latex/report.tex" "report.pdf" "report" 1755929619.14778 0
+["pdflatex"] 1755937803.61236 "/home/tamanna/Documents/Logic_Assignment/Assignment1/Latex/report.tex" "report.pdf" "report" 1755937804.36633 0
   "/etc/texmf/web2c/texmf.cnf" 1744185070.07582 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/tamanna/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1750177424.88257 14040 a37eedf7b1fb5444f8ac241ad9c2ca5f ""
-  "/home/tamanna/Documents/Logic_Assignment/Assignment1/Latex/report.tex" 1755929617.99514 16935 4d2dbb7f0b19e6d9fa5803d3b9cb2a33 ""
+  "/home/tamanna/Documents/Logic_Assignment/Assignment1/Latex/report.tex" 1755937803.30922 22356 9b3b36614981ca70979581ba9b1e7c32 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -16,6 +16,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1136768653 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
@@ -25,6 +26,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1136768653 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1136768653 768 1321e9409b4137d6fb428ac9dc956269 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm" 1136768653 772 9a936b7f5e2ff0557fce0f62822f0bbf ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm" 1136768653 768 d7b9a2629a0c353102ad947dc9221d49 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1248133631 30251 6afa5cb1d0204815a708a080681d4674 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
@@ -94,9 +96,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1750177889.48981 165012 f177baa1c39a3ebd62c3096a43521a0d ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1750177914 6830956 79843bfc9a10bc1dc2e80a0b4dbd0ecb ""
-  "report.aux" 1755929619.05613 163 62caa2a276925a140dfb5a09f5283243 "pdflatex"
-  "report.out" 1755929618.81213 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "report.tex" 1755929617.99514 16935 4d2dbb7f0b19e6d9fa5803d3b9cb2a33 ""
+  "report.aux" 1755937804.30281 163 1597a99f0f32d26a2360138cbcf204c3 "pdflatex"
+  "report.out" 1755937804.12882 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "report.tex" 1755937803.30922 22356 9b3b36614981ca70979581ba9b1e7c32 ""
   (generated)
   "report.aux"
   "report.log"
