@@ -162,6 +162,34 @@ to \texttt{box\_encode}. The arithmetic on \texttt{cell} ensures that after each
     \end{itemize}
 \end{itemize}
 
+\subsection*{No two numbers accupy the same box}
+We encoded the atleast one rule for each row, column and cell. But it can also be the case that our SAT solver returns true for all P(i,j,num). To avoid such a scenario we encode the condition that for any two numbers they cannot be in the same box.
+
+\begin{lstlisting}
+    for i in range(81):
+        for j in range(9):
+            for k in range(j+1,9):
+                cnf.append([-(i*9+j+1), -(i*9+k+1)])        
+
+\end{lstlisting}
+\[
+\bigwedge_{i=0}^{80} \;\;
+\bigwedge_{0 \leq j < k \leq 8}
+\left(
+  \lnot P(i,j) \;\lor\; \lnot P(i,k)
+\right)
+\]
+
+\paragraph{}  
+The given code generates the clauses that enforce the condition that each cell of the Sudoku grid contains at most one number. The loop variable $i$ ranges from $0$ to $80$, representing the $81$ cells of the board. For each cell, the indices $j$ and $k$ range over the possible numbers $0$ to $8$, with the restriction $j < k$ to avoid repetition. For every such pair, the clause  
+\[
+\lnot P(i,j+1) \;\lor\; \lnot P(i,k+1)
+\]  
+is added to the CNF. This guarantees that no two distinct numbers can be simultaneously assigned to the same cell.
+
+
+Since we have an atleast one occurence in each row, col and cell for all numbers between 1-9 and we have an atmost one number per box condition we have the suffucuent conditions and need not att the condition of atleast one number per box.
+
 \subsection*{Member Contributions}
 This question was independently solved and coded by both team members with similar logic and runtime but just slight differences.
 Then we discussed and optimized the encoder to give the final submission. 
