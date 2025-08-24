@@ -47,6 +47,8 @@ valid_lines = [line.strip() for line in lines if len(line.strip()) == 81]
 # Randomly sample 500 lines without replacement
 sampled_lines = random.sample(valid_lines, min(500, len(valid_lines)))
 
+# sampled_lines = [["1" for i in range(81)]]
+
 # Convert each line to a 9x9 grid
 for line in sampled_lines:
     grid = [

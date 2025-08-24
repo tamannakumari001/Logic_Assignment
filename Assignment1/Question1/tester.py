@@ -2,7 +2,7 @@ import hashlib
 import math
 import os
 import csv
-from q1 import solve_sudoku
+from q1_sagar import solve_sudoku
 from typing import List
 from tqdm import tqdm
 import random
